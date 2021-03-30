@@ -24,6 +24,7 @@ int main(int argc, char* argv[]) {
             M1[j] = rand_r(&seed) % A;
 
         }
+        printf(" M1 - %f", M1[1]);
         /*Fill M1 with rand_r from 1 to A*/
         /*Create array M2 of N/2*/
         int N1 = N/2;
@@ -33,11 +34,12 @@ int main(int argc, char* argv[]) {
         for (j=0; j<N1; j++){
             M2[j] = A + rand_r(&seed) % 10*A;
         }
+
+        printf(" M2 - %f", M2[1]);
         /*stage map*/
         /*to each M1 use hyperbolic sinus, then ^2*/
         for (j=0; j<N; j++){
-            M1[j] = sinh(M1[j]);
-            M1[j] = M1[j]*M1[j];
+            M1[j] = pow(sinh(M1[j]), 2);
         }
         /*each element in M2 add to previous and then *e then sqrt*/
         double cM2[N1];
@@ -84,10 +86,10 @@ int main(int argc, char* argv[]) {
             a = M2[j]/minM2;
             b = (int) a;
             if (b % 2 == 0){
-                X = sin(X+M2[j]);
+                X = X+M2[j];
             }
         }
-        printf("%f\n" X);
+        printf(" X= %f\n", X);
 
     }
     gettimeofday(&T2,NULL);
