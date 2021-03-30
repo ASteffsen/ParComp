@@ -5,13 +5,13 @@
 
 int main(int argc, char* argv[]) {
     printf ("0");
-    int i, N;
+    int N;
     struct timeval T1,T2;
-    unsigned int * seed;
+    unsigned seed;
     long delta_ms;
     N = atoi(argv[1]);
     gettimeofday(&T1, NULL);
-    for (i=0; i<50; i++)
+    for (unsigned i=0; i<50; i++)
     {
         srand(i);
         seed = i;
@@ -21,17 +21,17 @@ int main(int argc, char* argv[]) {
         int j,k;
         int A = 900;
         for (j = 0; j<N; j++){
-            M1[j] = rand_r(seed) % A;
+            M1[j] = rand_r(&seed) % A;
 
         }
         /*Fill M1 with rand_r from 1 to A*/
         /*Create array M2 of N/2*/
-        int N1 = N1/2;
+        int N1 = N/2;
         double M2[N1];
 
         /*Fill M2 with rand_r from A to 10*A */
         for (j=0; j<N1; j++){
-            M2[j] = A + rand_r(seed) % 10*A;
+            M2[j] = A + rand_r(&seed) % 10*A;
         }
         /*stage map*/
         /*to each M1 use hyperbolic sinus, then ^2*/
@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
                 X = sin(X+M2[j]);
             }
         }
-        printf("X=", X);
+        printf("%f\n" X);
 
     }
     gettimeofday(&T2,NULL);
