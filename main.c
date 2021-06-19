@@ -1,10 +1,3 @@
-//
-//  main.c
-//  Parallel programming
-//
-//  Created by Алексей Агеев on 12.02.2021.
-//
-
 #include <math.h>
 #include <stdio.h>
 #include <sys/time.h>
